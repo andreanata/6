@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Clock, Eye, Tag, ArrowLeft, BookOpen, Share2 } from 'lucide-react';
+import { Clock, Tag, ArrowLeft, BookOpen, Share2 } from 'lucide-react';
 import { useArticleStore } from '../store/articleStore';
 import NewsCard from '../components/NewsCard';
 import Sidebar from '../components/Sidebar';
@@ -128,7 +128,6 @@ export default function ArticlePage() {
                   </div>
                   <div className="flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400 ml-auto">
                     <span className="flex items-center gap-1"><Clock size={12} /> {timeAgo(article.date)}</span>
-                    <span className="flex items-center gap-1"><Eye size={12} /> {article.views.toLocaleString()} dilihat</span>
                   </div>
                 </div>
 
