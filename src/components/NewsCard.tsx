@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Eye, Clock, Tag } from 'lucide-react';
+import { Clock, Tag } from 'lucide-react';
 import { NewsArticle } from '../data/newsData';
 import { formatDistanceToNow } from 'date-fns';
 import { id } from 'date-fns/locale';
@@ -29,11 +29,6 @@ function timeAgo(dateStr: string) {
   } catch {
     return dateStr;
   }
-}
-
-function formatViews(n: number) {
-  if (n >= 1000) return `${(n / 1000).toFixed(1)}K`;
-  return n.toString();
 }
 
 export default function NewsCard({ article, variant = 'standard', index = 0 }: NewsCardProps) {
@@ -81,7 +76,6 @@ export default function NewsCard({ article, variant = 'standard', index = 0 }: N
             <div className="flex items-center gap-4 text-gray-400 text-xs">
               <span className="font-semibold text-gray-200">{article.author}</span>
               <span className="flex items-center gap-1"><Clock size={12} /> {timeAgo(article.date)}</span>
-              <span className="flex items-center gap-1"><Eye size={12} /> {formatViews(article.views)}</span>
             </div>
           </div>
         </Link>
@@ -124,7 +118,6 @@ export default function NewsCard({ article, variant = 'standard', index = 0 }: N
               <span className="font-semibold text-gray-600 dark:text-gray-300">{article.author}</span>
               <div className="flex items-center gap-3">
                 <span className="flex items-center gap-1"><Clock size={11} /> {timeAgo(article.date)}</span>
-                <span className="flex items-center gap-1"><Eye size={11} /> {formatViews(article.views)}</span>
               </div>
             </div>
           </div>
@@ -159,7 +152,7 @@ export default function NewsCard({ article, variant = 'standard', index = 0 }: N
             </h4>
             <div className="flex items-center gap-2 mt-1 text-gray-400 text-[10px]">
               <span className="flex items-center gap-0.5"><Clock size={9} /> {timeAgo(article.date)}</span>
-              <span className="flex items-center gap-0.5"><Eye size={9} /> {formatViews(article.views)}</span>
+             
             </div>
           </div>
         </Link>
@@ -185,7 +178,6 @@ export default function NewsCard({ article, variant = 'standard', index = 0 }: N
             </h4>
             <div className="flex items-center gap-2 mt-1.5 text-gray-400 text-[10px]">
               <span className={`${catColor} text-white px-1.5 py-0.5 rounded text-[9px] font-bold`}>{article.category}</span>
-              <span className="flex items-center gap-0.5"><Eye size={9} /> {formatViews(article.views)}</span>
             </div>
           </div>
         </Link>
@@ -229,7 +221,6 @@ export default function NewsCard({ article, variant = 'standard', index = 0 }: N
             <span className="font-semibold text-gray-600 dark:text-gray-300">{article.author}</span>
             <div className="flex items-center gap-3">
               <span className="flex items-center gap-1"><Clock size={11} /> {timeAgo(article.date)}</span>
-              <span className="flex items-center gap-1"><Eye size={11} /> {formatViews(article.views)}</span>
               <span className="flex items-center gap-1"><Tag size={11} /> {article.tags[0]}</span>
             </div>
           </div>
