@@ -137,13 +137,33 @@ export default function ArticlePage() {
                 </p>
 
                 {/* Article Body - Auto-formatted paragraphs */}
-                <div className="prose prose-gray dark:prose-invert max-w-none">
-                  {article.content.split('\n').filter(p => p.trim()).map((paragraph, idx) => (
-                    <p key={idx} className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                      {paragraph.trim()}
-                    </p>
-                  ))}
-                </div>
+                {/* Article Body - Auto-formatted paragraphs */}
+<div className="prose prose-gray dark:prose-invert max-w-none">
+  {article.content.split('\n').filter(p => p.trim()).map((paragraph, idx) => {
+    const text = paragraph.trim();
+
+    // Jika paragraf diawali dan diakhiri tanda *
+    if (text.startsWith('*') && text.endsWith('*')) {
+      return (
+        <p
+          key={idx}
+          className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4 italic"
+        >
+          {text.slice(1, -1)}
+        </p>
+      );
+    }
+
+    return (
+      <p
+        key={idx}
+        className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4"
+      >
+        {text}
+      </p>
+    );
+  })}
+</div>
 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 pt-6 border-t border-gray-100 dark:border-gray-800">
